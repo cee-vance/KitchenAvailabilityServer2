@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Info</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2em;
+        margin: 10px 0;
+      }
+      .recentActivity{
+        background-color:aqua;
+        border-radius:5px;
+      }
+    </style>
+  </head>
+  <br>
+    <div class="container">
+      <h1>Kitchen Dashboard</h1>
+
+      <p id="bootTime">Boot Time:</p>
+
+      <div id="recentActivity" class="recentActivity">
+        <h1>Recent Activity</h1>
+        <p id="lastUpdate">Last Update Time:</p>
+      </div>
+    </div>
+    <br>
+ 
+    <script>
+      const startupTime = 1724603467;
+      function formatDate(date) {
+        return date.toLocaleString();
+      }
+      
+      window.onload = function() {
+        
+        const bootTime = new Date( startupTime * 1000);
+            document.getElementById("bootTime").innerHTML = "Boot Time: " + formatDate(bootTime);
+        };
+      
+      
+      async function updateTimes() {
+         
+          const url = "http://192.168.0.21/update";
+
+          try{
+            
+            const response = await fetch(url,{'mode':"no-cors"});
+
+            if( !response.ok){
+                throw new Error(`Response status: ${response.status}`);
+            }
+            const updateText = await response.text();
+            const update = Number(updateText);
+            const hrs = Math.floor(update / 60);
+            const mins = update % 60; 
+         
+            
+             let updateBgColor = "green";
+
+            if(update <= 15){
+              updateBgColor = "red";
+              }
+            const updateElem = document.getElementById("lastUpdate");
+            
+            updateElem.textContent = "Last Activity: " + hrs+ ":" + mins;
+            
+            const activityElem = document.getElementById("recentActivity");
+            activityElem.style.backgroundColor = updateBgColor;
+
+          }catch(error){
+              console.error(error.message);
+          }
+
+      }
+
+      updateTimes();
+      setInterval(updateTimes, 5000); 
+    </script>
+  </body>
+</html>
