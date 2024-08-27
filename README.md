@@ -9,12 +9,13 @@ This project uses an ESP32 microcontroller and a PIR motion sensor to monitor ki
 - **Real-time Updates**: Provides real-time updates on kitchen availability.
 - **Low Power Consumption**: Efficiently monitors activity with minimal power usage.
   
-![BreadboardSetup](https://github.com/user-attachments/assets/e859d1fb-047e-4650-be4f-ff6861486913)
+![WIN_20240827_11_28_26_Pro](https://github.com/user-attachments/assets/0f185d23-f518-45b7-a478-7a24ccc66a7e)
+
 
 ## Description
 
 > An Esp32 embedded project that runs a web server
-> on a local network which can be accessed with a private ip ( SEE SECURITY CONSIDERATIONS BELOW ).
+> on a local network which can be accessed with a private ip **( SEE SECURITY CONSIDERATIONS BELOW )**.
 > Once a user connects via the private ip, the device responds with html and js
 > that display minutes until last activity so they user can get a better idea
 > of how to plan around their meals / meal prep. 
