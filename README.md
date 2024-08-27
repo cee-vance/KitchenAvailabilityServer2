@@ -11,6 +11,15 @@ This project uses an ESP32 microcontroller and a PIR motion sensor to monitor ki
   
 ![BreadboardSetup](https://github.com/user-attachments/assets/e859d1fb-047e-4650-be4f-ff6861486913)
 
+## Description
+
+> An Esp32 embedded project that runs a web server
+> on a local network which can be accessed with a private ip ( SEE SECURITY CONSIDERATIONS BELOW ).
+> Once a user connects via the private ip, the device responds with html and js
+> that display minutes until last activity so they user can get a better idea
+> of how to plan around their meals / meal prep. 
+
+
 ## Components
 
 - ESP32 Development Board
@@ -35,12 +44,19 @@ This project uses an ESP32 microcontroller and a PIR motion sensor to monitor ki
         - `WiFi.h`
         - `WebServer.h`
 
-
-
 3. **Usage**:
     - Power the ESP32 and connect to the same WiFi network.
     - Open a web browser and enter the ESP32's IP address to view the kitchen status.
 
+4. **Configuration**
+
+    - The ip for the fetch callback must be configured after getting the ip from the Serial terminal
+    - The activity timeout can be reconfigured in the js, default is to show green after 5 minutes.
+5.  **Security Considerations**
+>   Running an esp32 device with this code 
+>   means that anyone with your ssid and pw 
+>   will be able to view the webpage. 
+>
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
