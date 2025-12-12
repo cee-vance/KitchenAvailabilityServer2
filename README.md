@@ -21,6 +21,10 @@ This project uses an ESP32 microcontroller and a PIR motion sensor to monitor ki
 
 ![KitchenActivityArchitecture](https://github.com/user-attachments/assets/b822b8e8-b877-40ee-8ea4-e571cdb7009c)
 
+## Demo
+Watch the project in action: [YouTube Demo](https://youtu.be/J8znrTG9woY)
+
+[![KitchenAvailabilityServer2 Demo](https://img.youtube.com/vi/J8znrTG9woY/0.jpg)](https://youtu.be/J8znrTG9woY)
 
 ## Components
 
